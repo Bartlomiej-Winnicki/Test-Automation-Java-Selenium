@@ -1,6 +1,9 @@
 package productStore.tests;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
@@ -9,6 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import productStore.utils.DriverFactory;
 import productStore.utils.PropertiesLoader;
 
+import java.io.File;
 import java.io.IOException;
 
 public class BaseTest {
@@ -30,8 +34,11 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void teardown(ITestResult result) {
+    public void teardown(ITestResult result) throws IOException {
         String name = result.getMethod().getMethodName();
+        TakesScreenshot screenshot = (TakesScreenshot) driver;
+        File scrFile = screenshot.getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("src/test/resources/screenshots/" + name + ".png"));
         System.out.println(result.getStatus());
         System.out.println(name);
         driver.quit();
