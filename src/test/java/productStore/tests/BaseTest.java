@@ -9,6 +9,7 @@ import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import productStore.utils.DriverFactory;
 import productStore.utils.PropertiesLoader;
 
@@ -18,6 +19,11 @@ import java.io.IOException;
 public class BaseTest {
 
     protected WebDriver driver;
+
+    @BeforeTest
+    public void testSetup() throws IOException {
+        FileUtils.cleanDirectory(new File("src/test/resources/screenshots"));
+    }
 
     @BeforeMethod
     public void setup() throws IOException {
@@ -35,7 +41,9 @@ public class BaseTest {
 
     @AfterMethod
     public void teardown(ITestResult result) throws IOException {
-        String name = result.getMethod().getMethodName();
+        String status = "";
+        if(result.getStatus() == ITestResult.FAILURE) status = "failed";
+        String name = (status + result.getMethod().getMethodName());
         TakesScreenshot screenshot = (TakesScreenshot) driver;
         File scrFile = screenshot.getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scrFile, new File("src/test/resources/screenshots/" + name + ".png"));
