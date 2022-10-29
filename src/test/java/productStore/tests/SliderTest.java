@@ -1,7 +1,5 @@
 package productStore.tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import productStore.pages.HomePage;
@@ -46,5 +44,19 @@ public class SliderTest extends BaseTest {
         homePage.clickLeftSliderBtn();
         Thread.sleep(1000);
         Assert.assertEquals(homePage.getVisibleSlide().getAttribute("alt"),"First slide");
+    }
+
+    @Test
+    public void sliderHoverTest() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
+        homePage.hoverOverCarousel();
+        Thread.sleep(6000);
+        Assert.assertEquals(homePage.getVisibleSlide().getAttribute("alt"),"First slide");
+    }
+    @Test
+    public void sliderRotationTest() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
+        Thread.sleep(6000);
+        Assert.assertEquals(homePage.getVisibleSlide().getAttribute("alt"),"Second slide");
     }
 }

@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -17,6 +18,9 @@ public class HomePage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
+
+    @FindBy(css = ".carousel-inner")
+    private WebElement carousel;
 
     @FindBy(css = "img[alt='First slide']")
     private WebElement firstSlide;
@@ -48,29 +52,46 @@ public class HomePage {
     private static final Logger logger = LogManager.getLogger();
 
     public void clickLeftSliderCaret() {
+        logger.info("Clicking sliders left carret");
         sliderLeftCaret.click();
+        logger.info("Sliders left carret clicked");
     }
 
     public void clickRightSliderCaret() {
+        logger.info("Clicking sliders right carret");
         sliderRightCaret.click();
+        logger.info("Sliders right carret clicked");
     }
 
     public void clickLeftSliderBtn() {
+        logger.info("Clicking sliders left button");
         sliderLeftBtn.click();
+        logger.info("Sliders left button clicked");
     }
 
     public void clickCenterSliderBtn() {
+        logger.info("Clicking sliders center button");
         sliderCenterBtn.click();
+        logger.info("Sliders center button clicked");
     }
 
     public void clickRightSliderBtn() {
+        logger.info("Clicking sliders right button");
         sliderRightBtn.click();
+        logger.info("Sliders right button clicked");
     }
 
     public WebElement getVisibleSlide() {
+        logger.info("Getting currently visible slide");
         return sliderImages.stream()
                 .filter(WebElement::isDisplayed)
                 .findFirst()
                 .get();
+    }
+
+    public void hoverOverCarousel() {
+        logger.info("Hovering cursor over the slider");
+        Actions actions = new Actions(driver);
+        actions.moveToElement(carousel).perform();
     }
 }
