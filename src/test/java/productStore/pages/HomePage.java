@@ -49,6 +49,9 @@ public class HomePage {
     @FindBy(css = "img[class='d-block img-fluid']") // "img[class='d-block img-fluid']"
     private List<WebElement> sliderImages;
 
+    @FindBy(xpath = "//img[@class='card-img-top img-fluid']")
+    private List<WebElement> productsImages;
+
     private static final Logger logger = LogManager.getLogger();
 
     public void clickLeftSliderCaret() {
@@ -87,6 +90,12 @@ public class HomePage {
                 .filter(WebElement::isDisplayed)
                 .findFirst()
                 .get();
+    }
+
+    public void clickProductImage() {
+        logger.info("Clicking product image");
+        productsImages.stream().findFirst().ifPresent(WebElement::click);
+        logger.info("Product image clicked");
     }
 
     public void hoverOverCarousel() {
