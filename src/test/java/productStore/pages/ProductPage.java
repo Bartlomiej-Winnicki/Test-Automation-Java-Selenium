@@ -6,14 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import productStore.utils.SeleniumHelper;
 
 public class ProductPage {
 
     WebDriver driver;
 
     public ProductPage(WebDriver driver) {
-        PageFactory.initElements(driver,this);
-        this.driver=driver;
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
     @FindBy(css = "[class='btn btn-success btn-lg']")
@@ -26,16 +27,22 @@ public class ProductPage {
 
     public void addToCart() throws InterruptedException {
         logger.info("Adding product to cart");
-        Thread.sleep(2000);
+        SeleniumHelper.waitForElementToBeVisible(driver, addToCartBtn, 2);
         addToCartBtn.click();
         logger.info("Product added to cart");
-        Thread.sleep(1000);
+    }
+
+    public void acceptAlert() throws InterruptedException {
+        SeleniumHelper.waitForAlertToAppear(driver, 2);
+        logger.info("Accepting alert");
         driver.switchTo().alert().accept();
+        logger.info("Alert accepted");
     }
 
     public void goToCart() {
-        logger.info("Going to cart");
+        logger.info("Clicking 'Cart' link");
         cartLink.click();
+        logger.info("'Cart' link clicked");
     }
 
 }

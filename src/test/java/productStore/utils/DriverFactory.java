@@ -19,8 +19,8 @@ public class DriverFactory {
 
         if (name.equals("firefox")) {
             FirefoxOptions options = new FirefoxOptions();
-            if(Boolean.valueOf(headless)){
-            options.addArguments("--headless");
+            if (Boolean.valueOf(headless)) {
+                options.addArguments("--headless");
             }
             WebDriverManager.firefoxdriver().setup();
             return new FirefoxDriver(options);
