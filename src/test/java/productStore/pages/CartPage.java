@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import productStore.utils.SeleniumHelper;
 
 
 public class CartPage {
@@ -13,12 +14,15 @@ public class CartPage {
     WebDriver driver;
 
     public CartPage(WebDriver driver) {
-        PageFactory.initElements(driver,this);
-        this.driver=driver;
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
     @FindBy(xpath = "//button[@data-target='#orderModal']")
     private WebElement placeOrderBtn;
+
+    @FindBy(css = "#orderModalLabel")
+    private WebElement formHeading;
 
     @FindBy(css = "#name")
     private WebElement nameInput;
@@ -41,11 +45,15 @@ public class CartPage {
     @FindBy(xpath = "//button[@onclick='purchaseOrder()']")
     private WebElement purchaseBtn;
 
+    @FindBy(xpath = "//h2[text()='Thank you for your purchase!']")
+    private WebElement purchaseSuccessMessage;
+
     private static final Logger logger = LogManager.getLogger();
 
     public void clickPlaceOrderButton() {
         logger.info("Clicking 'Place Order' button");
         placeOrderBtn.click();
+        SeleniumHelper.waitForElementToBeVisible(driver, formHeading, 2);
     }
 
     public void enterName(String name) {
@@ -78,12 +86,14 @@ public class CartPage {
         yearInput.sendKeys(year);
     }
 
-    public void clickPurchaceBtn() {
+    public void clickPurchaseBtn() {
         logger.info("Clicking purchase button");
         purchaseBtn.click();
     }
 
-
+    public String getPurchaseSuccessMessage() {
+        return purchaseSuccessMessage.getText();
+    }
 
 
 }

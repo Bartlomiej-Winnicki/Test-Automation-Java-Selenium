@@ -28,12 +28,12 @@ public class BaseTest {
     @BeforeMethod
     public void setup() throws IOException {
         driver = DriverFactory.getDriver();
-        if(Boolean.valueOf(PropertiesLoader.loadProperty("browser.maximize"))){
-        driver.manage().window().maximize();
+        if (Boolean.valueOf(PropertiesLoader.loadProperty("browser.maximize"))) {
+            driver.manage().window().maximize();
         } else {
             String widthProperty = PropertiesLoader.loadProperty("browser.width");
             String heightProperty = PropertiesLoader.loadProperty("browser.height");
-            Dimension d = new Dimension(Integer.parseInt(widthProperty),Integer.parseInt(heightProperty));
+            Dimension d = new Dimension(Integer.parseInt(widthProperty), Integer.parseInt(heightProperty));
             driver.manage().window().setSize(d);
         }
         driver.get("https://www.demoblaze.com/index.html");
@@ -42,7 +42,7 @@ public class BaseTest {
     @AfterMethod
     public void teardown(ITestResult result) throws IOException {
         String status = "";
-        if(result.getStatus() == ITestResult.FAILURE) status = "failed";
+        if (result.getStatus() == ITestResult.FAILURE) status = "failed";
         String name = (status + result.getMethod().getMethodName());
         TakesScreenshot screenshot = (TakesScreenshot) driver;
         File scrFile = screenshot.getScreenshotAs(OutputType.FILE);
