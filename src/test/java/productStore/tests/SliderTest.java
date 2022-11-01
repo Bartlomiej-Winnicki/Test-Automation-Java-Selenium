@@ -47,7 +47,6 @@ public class SliderTest extends BaseTest {
     public void sliderHoverTest() throws InterruptedException {
         HomePage homePage = new HomePage(driver);
         homePage.hoverOverCarousel();
-        SeleniumHelper.waitForSliderRotationToComplete();
         Assert.assertEquals(homePage.getVisibleSlide().getAttribute("alt"), "First slide");
     }
 

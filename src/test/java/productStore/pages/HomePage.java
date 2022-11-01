@@ -110,9 +110,11 @@ public class HomePage {
         logger.info("Product image clicked");
     }
 
-    public void hoverOverCarousel() {
+    public void hoverOverCarousel() throws InterruptedException {
         logger.info("Hovering cursor over the slider");
         Actions actions = new Actions(driver);
         actions.moveToElement(carousel).perform();
+        SeleniumHelper.waitForSliderRotationToComplete();
+        logger.info("Wait for rotation completed");
     }
 }
