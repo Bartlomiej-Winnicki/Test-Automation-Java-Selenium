@@ -50,45 +50,53 @@ public class CartPage {
 
     private static final Logger logger = LogManager.getLogger();
 
-    public void clickPlaceOrderButton() {
+    public CartPage clickPlaceOrderButton() {
         logger.info("Clicking 'Place Order' button");
         placeOrderBtn.click();
         SeleniumHelper.waitForElementToBeVisible(driver, formHeading, 2);
+        return new CartPage(driver);
     }
 
-    public void enterName(String name) {
+    public CartPage enterName(String name) {
         logger.info("Entering name");
         nameInput.sendKeys(name);
+        return new CartPage(driver);
     }
 
-    public void enterCountry(String country) {
+    public CartPage enterCountry(String country) {
         logger.info("Entering country");
         countryInput.sendKeys(country);
+        return new CartPage(driver);
     }
 
-    public void enterCity(String city) {
+    public CartPage enterCity(String city) {
         logger.info("Entering city");
         cityInput.sendKeys(city);
+        return new CartPage(driver);
     }
 
-    public void enterCardNumber(String cardNumber) {
+    public CartPage enterCardNumber(String cardNumber) {
         logger.info("Entering card number");
         cardInput.sendKeys(cardNumber);
+        return new CartPage(driver);
     }
 
-    public void enterMonth(String month) {
+    public CartPage enterMonth(String month) {
         logger.info("Entering month number");
         monthInput.sendKeys(month);
+        return new CartPage(driver);
     }
 
-    public void enterYear(String year) {
+    public CartPage enterYear(String year) {
         logger.info("Entering year");
         yearInput.sendKeys(year);
+        return new CartPage(driver);
     }
 
-    public void clickPurchaseBtn() {
+    public CartPage clickPurchaseBtn() {
         logger.info("Clicking purchase button");
         purchaseBtn.click();
+        return new CartPage(driver);
     }
 
     public String getPurchaseSuccessMessage() {

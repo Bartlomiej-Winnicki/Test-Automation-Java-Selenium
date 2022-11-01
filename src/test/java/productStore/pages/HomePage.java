@@ -59,39 +59,44 @@ public class HomePage {
 
     private static final Logger logger = LogManager.getLogger();
 
-    public void clickLeftSliderCaret() throws InterruptedException {
+    public HomePage clickLeftSliderCaret() throws InterruptedException {
         logger.info("Clicking sliders left carret");
         sliderLeftCaret.click();
         SeleniumHelper.waitForAnimationToComplete();
         logger.info("Sliders left carret clicked");
+        return new HomePage(driver);
     }
 
-    public void clickRightSliderCaret() throws InterruptedException {
+    public HomePage clickRightSliderCaret() throws InterruptedException {
         logger.info("Clicking sliders right carret");
         sliderRightCaret.click();
         SeleniumHelper.waitForAnimationToComplete();
         logger.info("Sliders right carret clicked");
+        return new HomePage(driver);
     }
 
-    public void clickLeftSliderBtn() {
+    public HomePage clickLeftSliderBtn() {
         logger.info("Clicking sliders left button");
         sliderLeftBtn.click();
         SeleniumHelper.waitForElementToBeVisible(driver, firstSlide, 2);
         logger.info("Sliders left button clicked");
+        return new HomePage(driver);
     }
 
-    public void clickCenterSliderBtn() {
+    public HomePage clickCenterSliderBtn() {
         logger.info("Clicking sliders center button");
         sliderCenterBtn.click();
         SeleniumHelper.waitForElementToBeVisible(driver, secondSlide, 2);
         logger.info("Sliders center button clicked");
+        return new HomePage(driver);
     }
 
-    public void clickRightSliderBtn() {
+    public HomePage clickRightSliderBtn() {
         logger.info("Clicking sliders right button");
         sliderRightBtn.click();
         SeleniumHelper.waitForElementToBeVisible(driver, thirdSlide, 2);
         logger.info("Sliders right button clicked");
+        return new HomePage(driver);
     }
 
     public WebElement getVisibleSlide() throws InterruptedException {
@@ -103,16 +108,23 @@ public class HomePage {
                 .get();
     }
 
-    public void clickProductImage() throws InterruptedException {
+    public ProductPage clickProductImage() throws InterruptedException {
         logger.info("Clicking product image");
         SeleniumHelper.waitForNotEmptyDisplayedList(driver, By.xpath("//img[@class='card-img-top img-fluid']"), 2);
-        productsImages.stream().findFirst().ifPresent(WebElement::click);
+        productsImages.
+                stream()
+                .findFirst()
+                .ifPresent(WebElement::click);
         logger.info("Product image clicked");
+        return new ProductPage(driver);
     }
 
-    public void hoverOverCarousel() {
+    public HomePage hoverOverCarouselForRotationTime() throws InterruptedException {
         logger.info("Hovering cursor over the slider");
         Actions actions = new Actions(driver);
         actions.moveToElement(carousel).perform();
+        SeleniumHelper.waitForSliderRotationToComplete();
+        logger.info("Wait completed");
+        return new HomePage(driver);
     }
 }

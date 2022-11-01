@@ -25,24 +25,27 @@ public class ProductPage {
 
     private static final Logger logger = LogManager.getLogger();
 
-    public void addToCart() throws InterruptedException {
+    public ProductPage addToCart() throws InterruptedException {
         logger.info("Adding product to cart");
         SeleniumHelper.waitForElementToBeVisible(driver, addToCartBtn, 2);
         addToCartBtn.click();
         logger.info("Product added to cart");
+        return new ProductPage(driver);
     }
 
-    public void acceptAlert() throws InterruptedException {
+    public ProductPage acceptAlert() throws InterruptedException {
         SeleniumHelper.waitForAlertToAppear(driver, 2);
         logger.info("Accepting alert");
         driver.switchTo().alert().accept();
         logger.info("Alert accepted");
+        return new ProductPage(driver);
     }
 
-    public void goToCart() {
+    public CartPage goToCart() {
         logger.info("Clicking 'Cart' link");
         cartLink.click();
         logger.info("'Cart' link clicked");
+        return new CartPage(driver);
     }
 
 }
