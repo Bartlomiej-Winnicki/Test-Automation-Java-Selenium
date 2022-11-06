@@ -105,7 +105,7 @@ public class HomePage {
 
     public void clickProductImage() throws InterruptedException {
         logger.info("Clicking product image");
-        SeleniumHelper.waitForNotEmptyDisplayedList(driver, By.xpath("//img[@class='card-img-top img-fluid']"), 2);
+        SeleniumHelper.waitForNonEmptyDisplayedList(driver, By.xpath("//img[@class='card-img-top img-fluid']"), 2);
         productsImages.stream().findFirst().ifPresent(WebElement::click);
         logger.info("Product image clicked");
     }
