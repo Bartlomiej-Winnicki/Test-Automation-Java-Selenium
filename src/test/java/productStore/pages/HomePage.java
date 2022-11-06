@@ -110,7 +110,7 @@ public class HomePage {
 
     public ProductPage clickProductImage() throws InterruptedException {
         logger.info("Clicking product image");
-        SeleniumHelper.waitForNotEmptyDisplayedList(driver, By.xpath("//img[@class='card-img-top img-fluid']"), 2);
+        SeleniumHelper.waitForNonEmptyDisplayedList(driver, By.xpath("//img[@class='card-img-top img-fluid']"), 2);
         productsImages.
                 stream()
                 .findFirst()

@@ -2,11 +2,9 @@ package productStore.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import productStore.pages.CartPage;
 import productStore.pages.HomePage;
-import productStore.pages.ProductPage;
 
-public class BuyItemTest extends BaseTest {
+public class PurchaseTest extends BaseTest {
 
     @Test
     public void buyItemTest() throws InterruptedException {
