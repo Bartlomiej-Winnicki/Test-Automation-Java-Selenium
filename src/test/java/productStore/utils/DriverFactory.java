@@ -15,7 +15,6 @@ public class DriverFactory {
     public static WebDriver getDriver() throws IOException {
         String name = PropertiesLoader.loadProperty("browser.name");
         String headless = PropertiesLoader.loadProperty("browser.headless");
-        String maximize = PropertiesLoader.loadProperty("browser.maximize");
 
         if (name.equals("firefox")) {
             FirefoxOptions options = new FirefoxOptions();
