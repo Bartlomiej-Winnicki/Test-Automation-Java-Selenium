@@ -25,7 +25,7 @@ public class ProductPage {
 
     private static final Logger logger = LogManager.getLogger();
 
-    public ProductPage addToCart() throws InterruptedException {
+    public ProductPage addToCart() {
         logger.info("Adding product to cart");
         SeleniumHelper.waitForElementToBeVisible(driver, addToCartBtn, 2);
         addToCartBtn.click();
@@ -33,7 +33,7 @@ public class ProductPage {
         return new ProductPage(driver);
     }
 
-    public ProductPage acceptAlert() throws InterruptedException {
+    public ProductPage acceptAlert() {
         SeleniumHelper.waitForAlertToAppear(driver, 2);
         logger.info("Accepting alert");
         driver.switchTo().alert().accept();

@@ -7,7 +7,7 @@ import productStore.pages.HomePage;
 public class PurchaseTest extends BaseTest {
 
     @Test
-    public void buyItemTest() throws InterruptedException {
+    public void buyItemTest() {
         String purchaseSuccessMessage = new HomePage(driver)
                 .clickProductImage()
                 .addToCart()

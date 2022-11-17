@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import productStore.pages.HomePage;
 import productStore.utils.SeleniumHelper;
 
-public class SliderTest extends BaseTest {
+public class HomePageTest extends BaseTest {
 
     @Test
     public void leftCaretTest() throws InterruptedException {
