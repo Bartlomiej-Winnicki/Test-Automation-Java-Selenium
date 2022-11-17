@@ -60,17 +60,17 @@ public class HomePage {
     private static final Logger logger = LogManager.getLogger();
 
     public void clickLeftSliderCaret() throws InterruptedException {
-        logger.info("Clicking sliders left carret");
+        logger.info("Clicking sliders left caret");
         sliderLeftCaret.click();
         SeleniumHelper.waitForAnimationToComplete();
-        logger.info("Sliders left carret clicked");
+        logger.info("Sliders left caret clicked");
     }
 
     public void clickRightSliderCaret() throws InterruptedException {
-        logger.info("Clicking sliders right carret");
+        logger.info("Clicking sliders right caret");
         sliderRightCaret.click();
         SeleniumHelper.waitForAnimationToComplete();
-        logger.info("Sliders right carret clicked");
+        logger.info("Sliders right caret clicked");
     }
 
     public void clickLeftSliderBtn() {
