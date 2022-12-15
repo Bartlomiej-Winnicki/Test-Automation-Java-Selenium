@@ -49,7 +49,7 @@ This project uses:
      <details>
  <summary>Click for details</summary>
    
-   While managing two separate branches may be considered a nightmare, or at least an unnecessary effort, I've decided to create second one in later stage of the     project, just to demonstrate a fluent approach to Page Object Model. After some initial effort to make required changes to methods in page objects, fluent allows us to  chain methods in tests, which speeds up work, and makes our code more readable.
+   While managing two separate branches may be considered a nightmare, or at least an unnecessary effort, I've decided to create second one in later stage of the     project, just to demonstrate a fluent approach to Page Object Model. After some initial effort to make required changes to methods in page-related classes, fluent allows us to  chain methods in tests, which speeds up work and makes our code more readable.
    
    Example of fluent test method:
     
