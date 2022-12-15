@@ -49,9 +49,9 @@ This project uses:
      <details>
  <summary>Click for details</summary>
    
-   Wyjaśnij, dlaczego używasz dwóch branchy. Opisz zalety fluenta. 😄
-    Fluent approach in Page Object Pattern, means that most of methods in Page classes should return the object of class containing next method we want to use in test.
-    Such approach allows us to chain methods in our tests. Example of such test:  
+   While managing two separate branches may be considered a nightmare, or at least an unnecessary effort, I've decided to create second one in later stage of the     project, just to demonstrate a fluent approach to Page Object Model. After some initial effort to make required changes to methods in page objects, fluent allows us to  chain methods in tests, which speeds up work, and makes our code more readable.
+   
+   Example of fluent test method:
     
  ```java
  @Test
