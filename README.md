@@ -19,7 +19,7 @@ This project uses:
     @BeforeTest method, testSetup:
    
    ```java
-       @BeforeTest
+   @BeforeTest
    public void testSetup() throws IOException {
        FileUtils.cleanDirectory(new File("src/test/resources/screenshots"));
    }
@@ -54,7 +54,7 @@ This project uses:
    Example of fluent test method:
     
  ```java
- @Test
+   @Test
    public void buyItemTest() throws InterruptedException {
         String purchaseSuccessMessage = new HomePage(driver)
                .clickProductImage()
@@ -112,9 +112,9 @@ This project uses:
    public static String loadProperty(String propertyName) throws IOException {
 
     InputStream inputStream = new FileInputStream("src/test/resources/config.properties");
-       Properties properties = new Properties();
-       properties.load(inputStream);
-       return properties.getProperty(propertyName);
+    Properties properties = new Properties();
+    properties.load(inputStream);
+    return properties.getProperty(propertyName);
    }
    ```
    And used in DriverFactory.java and BaseTest.java classes.
